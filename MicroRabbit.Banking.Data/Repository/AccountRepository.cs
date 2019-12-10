@@ -10,7 +10,7 @@ namespace MicroRabbit.Banking.Data.Repository
         private BankingDBContext _ctx;
         public AccountRepository(BankingDBContext dbContext)
         {
-            this._ctx = dbContext
+            this._ctx = dbContext;
         }
         public IEnumerable<Account> GetAccounts()
         {
