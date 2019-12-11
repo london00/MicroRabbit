@@ -8,7 +8,7 @@ namespace MicroRabbit.Banking.Data.Context
         public BankingDBContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<BankingDBContext>();
-            optionsBuilder.UseSqlServer("Server=DESKTOP-5GIEO5J\\SQLEXPRESS;Database=BankingDB;Trusted_Connection=True;MultipleResultsSets=True");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-5GIEO5J\\SQLEXPRESS;Database=BankingDB;Trusted_Connection=True;MultipleActiveResultSets=True");
 
             return new BankingDBContext(optionsBuilder.Options);
         }
