@@ -16,6 +16,7 @@ namespace MicroRabbit.Infra.Bus
 {
     public sealed class RabbitMQBus : IEventBus
     {
+        private const string RABBITMQ_HOSTNAME = "rabbitmq";
         private readonly IMediator _mediator;
         private readonly Dictionary<string, List<Type>> _handlers;
         private readonly List<Type> _eventTypes;
@@ -37,7 +38,7 @@ namespace MicroRabbit.Infra.Bus
         {
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost"
+                HostName = RABBITMQ_HOSTNAME
             };
 
             using (var connection = factory.CreateConnection())
@@ -85,7 +86,7 @@ namespace MicroRabbit.Infra.Bus
         {
             var factory = new ConnectionFactory()
             {
-                HostName = "localhost",
+                HostName = RABBITMQ_HOSTNAME,
                 DispatchConsumersAsync = true
             };
 
