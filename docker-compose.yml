@@ -1,0 +1,45 @@
+version: '3.4'
+
+services:
+  microrabbit.mvc:
+    image: ${DOCKER_REGISTRY-}microrabbitmvc
+    build:
+      context: .
+      dockerfile: MicroRabbit.MVC/Dockerfile
+    depends_on:
+      - rabbitmq
+    expose:
+      - "8080"
+
+  microrabbit.banking.api:
+    image: ${DOCKER_REGISTRY-}microrabbitbankingapi
+    build:
+      context: .
+      dockerfile: MicroRabbit.Banking.Api/Dockerfile
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
+  microrabbit.transfer.api:
+    image: ${DOCKER_REGISTRY-}microrabbittransferapi
+    build:
+      context: .
+      dockerfile: MicroRabbit.Transfer.Api/Dockerfile
+    depends_on:
+      - rabbitmq
+    restart: on-failure
+
+  rabbitmq: # login guest:guest
+    image: rabbitmq:management
+    ports:
+    - "4369:4369"
+    - "5671:5671"
+    - "5672:5672"
+    - "25672:25672"
+    - "15671:15671"
+    - "15672:15672"
+    healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:15672"]
+        interval: 30s
+        timeout: 10s
+        retries: 5

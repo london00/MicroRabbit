@@ -55,7 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Transfer.Data",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.Transfer.Domain", "MicroRabbit.Transfer.Domain\MicroRabbit.Transfer.Domain.csproj", "{60BD01D8-0835-4721-8566-5B1F3FA2681B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MicroRabbit.MVC", "MicroRabbit.MVC\MicroRabbit.MVC.csproj", "{86A1D7B7-C577-4CFB-A1B6-030D3F392A94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicroRabbit.MVC", "MicroRabbit.MVC\MicroRabbit.MVC.csproj", "{86A1D7B7-C577-4CFB-A1B6-030D3F392A94}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{6DD9065A-F23D-46B3-8C71-56580C2A2F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{86A1D7B7-C577-4CFB-A1B6-030D3F392A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A1D7B7-C577-4CFB-A1B6-030D3F392A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86A1D7B7-C577-4CFB-A1B6-030D3F392A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD9065A-F23D-46B3-8C71-56580C2A2F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD9065A-F23D-46B3-8C71-56580C2A2F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD9065A-F23D-46B3-8C71-56580C2A2F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD9065A-F23D-46B3-8C71-56580C2A2F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
