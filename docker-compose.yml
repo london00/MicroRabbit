@@ -11,12 +11,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:8080
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/MicroRabbit.MVC.pfx
     ports:
       - "8080:8080"
       - "443:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${USERPROFILE}/.aspnet/https:/https:ro
 
   microrabbit.banking.api:
     image: ${DOCKER_REGISTRY-}microrabbitbankingapi
@@ -29,12 +31,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/MicroRabbit.Banking.Api.pfx
     ports:
       - "80"
       - "443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${USERPROFILE}/.aspnet/https:/https:ro
 
   microrabbit.transfer.api:
     image: ${DOCKER_REGISTRY-}microrabbittransferapi
@@ -47,12 +51,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
+      - ASPNETCORE_Kestrel__Certificates__Default__Password=123456
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/MicroRabbit.Transfer.Api.pfx
     ports:
-      - "80"
+      - "8080"
       - "443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - ${USERPROFILE}/.aspnet/https:/https:ro
 
   rabbitmq: # login guest:guest
     image: rabbitmq:management
@@ -67,4 +73,4 @@ services:
         test: ["CMD", "curl", "-f", "http://localhost:15672"]
         interval: 30s
         timeout: 10s
-        retries: 5
+        retries: 5 

@@ -1,11 +1,11 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2.8-bionic AS base
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2.8-bionic AS build
 WORKDIR /src
 COPY ["MicroRabbit.MVC/MicroRabbit.MVC.csproj", "MicroRabbit.MVC/"]
 RUN dotnet restore "MicroRabbit.MVC/MicroRabbit.MVC.csproj"
