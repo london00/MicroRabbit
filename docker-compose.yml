@@ -8,6 +8,8 @@ services:
       dockerfile: MicroRabbit.MVC/Dockerfile
     depends_on:
       - rabbitmq
+      - microrabbit.banking.api
+      - microrabbit.transfer.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
@@ -67,18 +69,21 @@ services:
       dockerfile: Nginx/Dockerfile
     ports:
         - "80:80"
+        - "443:443"
     depends_on:
       - microrabbit.mvc
+    restart: on-failure
     healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:8080"]
-        interval: 30s
-        timeout: 10s
-        retries: 5
+       test: ["CMD", "curl", "-f", "http://localhost:80"]
+       interval: 30s
+       timeout: 10s
+       retries: 5
 
   rabbitmq: # login guest:guest
     image: rabbitmq:management
     ports:
     - "15672:15672"
+    restart: on-failure
     healthcheck:
         test: ["CMD", "curl", "-f", "http://localhost:15672"]
         interval: 30s

@@ -46,7 +46,7 @@ namespace MicroRabbit.MVC.Controllers
 
             await this._transferServiceProxy.Transfer(transferDto);
 
-            return View();
+            return Ok();
         }
     }
 }
